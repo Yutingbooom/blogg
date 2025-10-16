@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增文章 - 部落格</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f7f7f7; margin: 0; padding: 0; }
+        .container { width: 60%; margin: 0 auto; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; }
+        label { display: block; margin: 10px 0 5px; }
+        input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; }
+        textarea { height: 150px; }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .back { display: inline-block; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="{{ url_for('index') }}" class="back">← 返回首頁</a>
+    <h1>新增文章</h1>
+    
+    <form method="POST">
+        <label for="title">標題</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="author">作者</label>
+        <input type="text" id="author" name="author" required>
+
+        <label for="content">內容</label>
+        <textarea id="content" name="content" required></textarea>
+
+        <button type="submit">提交文章</button>
+    </form>
+</div>
+
+</body>
+</html>

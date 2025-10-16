@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>部落格首頁</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f7f7f7; margin: 0; padding: 0; }
+        .container { width: 80%; margin: 0 auto; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; }
+        .post { border-bottom: 1px solid #ccc; margin-bottom: 20px; padding-bottom: 15px; }
+        .post h2 { margin: 0; }
+        .post a { text-decoration: none; color: #007bff; }
+        .post a:hover { text-decoration: underline; }
+        .author { color: #888; font-size: 0.9em; }
+        .new-post { text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>部落格首頁</h1>
+    
+    <div class="new-post">
+        <a href="{{ url_for('new_post') }}" style="font-size: 1.2em; color: #007bff;">新增文章</a>
+    </div>
+
+    {% for post in posts %}
+    <div class="post">
+        <h2><a href="{{ url_for('post_detail', post_id=post.id) }}">{{ post.title }}</a></h2>
+        <p class="author">作者：{{ post.author }}</p>
+        <p>{{ post.content[:50] }}... <a href="{{ url_for('post_detail', post_id=post.id) }}">閱讀更多</a></p>
+    </div>
+    {% endfor %}
+
+</div>
+</body>
+</html>
